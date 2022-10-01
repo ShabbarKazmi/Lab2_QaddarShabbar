@@ -16,7 +16,6 @@ public partial class MainPage : ContentPage
 	{
 		InitializeComponent();
         bl = new Businesslogic();
-        //EntriesLV.ItemsSource = MauiProgram.crossword.AllEntries;
         EntriesLV.ItemsSource = bl.db.AllEntries;
     }
 
@@ -70,38 +69,64 @@ public partial class MainPage : ContentPage
 
     async void onDelete(System.Object sender, System.EventArgs e)
     {
-        string id = await DisplayPromptAsync("Edit Entry", "Enter Id of entry:", keyboard: Keyboard.Numeric);
+        int idToDelete;
+        //string id = await DisplayPromptAsync("Edit Entry", "Enter Id of entry:", keyboard: Keyboard.Numeric);
 
-        int IdToDetle = Int32.Parse(id);
-
-        if (bl.onDelete(IdToDetle))
+        Entry Selected = (Entry)EntriesLV.SelectedItem;
+        if ( Selected is not null)
         {
-            await DisplayAlert("Delete", "Entry Deleted sucessfully ", "Ok");
+            idToDelete = Selected.Id;
+
+            if (bl.onDelete(idToDelete))
+            {
+                await DisplayAlert("Delete", "Entry Deleted sucessfully ", "Ok");
+            }
+            else
+            {
+                await DisplayAlert("Delete", "There was an error in adding current entry.Please try again", "Ok");
+            }
         }
         else
-        {
-            await DisplayAlert("Delete", "There was an error in adding current entry.Please try again", "Ok");
+        { 
+            await DisplayAlert("Delete", "Please Select ID to Delete", "Ok"); 
         }
+            
+         
+
     }
 
     async void onEdit(System.Object sender, System.EventArgs e) 
     {
 
-        /*
-        string userEditId = await DisplayPromptAsync("Edit Entry", "Enter Id of entry:", keyboard: Keyboard.Numeric);
 
-        int entryEditId = Int32.Parse(userEditId);
 
-        if (bl.onEdit(entryEditId))
+        //string userEditId = await DisplayPromptAsync("Edit Entry", "Enter Id of entry:", keyboard: Keyboard.Numeric);
+
+        int idToEdit;
+        Entry Selected = (Entry)EntriesLV.SelectedItem;
+
+        if (Selected is not null) 
         {
+            idToEdit = Selected.Id;
 
-            await DisplayAlert("Delete", "Entry Deleted sucessfully ", "Ok");
-        }
-        else
+            if (bl.onEdit(idToEdit, userClue, userAnswer, userDate, userDifficulty))
+            {
+
+                await DisplayAlert("Edit", "Entry was Edited Sucessfully ", "Ok");
+            }
+            else
+            {
+                await DisplayAlert("Edit", "There was an error in editing current entry. Please try again", "Ok");
+            }
+        } else
         {
-            await DisplayAlert("Delete", "There was an error in adding current entry.Please try again", "Ok");
+            await DisplayAlert("Edit", "Please Select ID to Edit", "Ok");
         }
-        */
+
+
+
+
+
 
 
     }   

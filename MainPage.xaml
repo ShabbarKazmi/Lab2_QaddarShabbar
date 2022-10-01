@@ -94,8 +94,7 @@
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto" />
                                 </Grid.RowDefinitions>
-
-
+                                
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto" />
@@ -104,7 +103,7 @@
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
 
-                                <Label Grid.Row="1" Grid.Column="0" Text="{Binding Id}"/>
+                                <Label Grid.Row="1" Grid.Column="0" Text="{Binding Id}" />
                                 <Label Grid.Row="1" Grid.Column="1" Text="{Binding Clue}"/>
                                 <Label Grid.Row="1" Grid.Column="2" Text="{Binding Answer}"/>
                                 <Label Grid.Row="1" Grid.Column="3" Text="{Binding CurrentDate}"/>

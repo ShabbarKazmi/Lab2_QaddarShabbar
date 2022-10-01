@@ -38,11 +38,11 @@ namespace Lab2_QaddarShabbar
             return false;
         }
 
-        public Boolean onEdit(int id)
+        public Boolean onEdit(int id ,String clue, String answer, String date, int difficulty)
         {
             Entry entryToEdit = getEntry(id);
 
-            if (entryToEdit is not null && db.Edit(entryToEdit))
+            if (entryToEdit is not null && db.Edit(entryToEdit,clue,answer,date,difficulty))
             {
                 return true;
             }

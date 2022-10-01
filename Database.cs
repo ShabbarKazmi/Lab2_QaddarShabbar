@@ -6,7 +6,7 @@ namespace Lab2_QaddarShabbar
     public class Database
     {
 
-        private ObservableCollection<Entry> entries = new ObservableCollection<Entry>();
+        public ObservableCollection<Entry> entries = new ObservableCollection<Entry>();
 
         public ObservableCollection<Entry> AllEntries
         {
@@ -35,11 +35,20 @@ namespace Lab2_QaddarShabbar
             return true;
         }
 
-        public Boolean Edit(Entry entry)
+        public Boolean Edit(Entry entry,String clue, String answer, String date, int difficulty)
         {
             int currentEntryIndex = entries.IndexOf(entry);
 
-            return false;
+       
+                entries[currentEntryIndex].Clue = clue;
+                entries[currentEntryIndex].Answer = answer;
+                entries[currentEntryIndex].CurrentDate = date;
+                entries[currentEntryIndex].Difficulty = difficulty;
+            
+
+
+     
+            return true;
 
         }
 
