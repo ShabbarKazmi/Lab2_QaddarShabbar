@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Linq.Expressions;
 
 namespace Lab2_QaddarShabbar
 {
@@ -24,30 +25,22 @@ namespace Lab2_QaddarShabbar
 
         public Boolean Add(Entry entry) 
         {
-            async void onAdd(System.Object sender, System.EventArgs e)
-            {
-                if (userClue is not null && userAnswer is not null && userDate is not null &&
-                     userDifficulty != -1 && id != -1)
-                {
-
-                    MauiProgram.crossword.AllEntries.Add(new Entry(userClue, userAnswer, userDifficulty, userDate, ++id));
-                    return false;
-                }
-                else
-                {
-                    await DisplayAlert("Invalid Entry", "Please make sure difficulty is within range (1-3)", "Ok");
-                    
-                }
-
-                return false;
-
-            }
-            
+            entries.Add(entry);
+            return true;
         }
 
         public Boolean Delete(Entry entry)
         {
+            entries.Remove(entry);
+            return true;
+        }
+
+        public Boolean Edit(Entry entry)
+        {
+            int currentEntryIndex = entries.IndexOf(entry);
+
             return false;
+
         }
 
         public Boolean readFromFile()

@@ -2,8 +2,6 @@
 
 public static class MauiProgram
 {
-
-    public static Database crossword = new Database();
     public static MauiApp CreateMauiApp()
 	{
 		var builder = MauiApp.CreateBuilder();
