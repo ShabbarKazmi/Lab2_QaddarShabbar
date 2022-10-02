@@ -6,21 +6,21 @@ using System.Threading.Tasks;
 
 namespace Lab2_QaddarShabbar
 {
-    public class Businesslogic
+    public class Businesslogic : IBusinesslogic
     {
         public Database db;
-        
+
 
         public Businesslogic()
         {
             db = new Database();
         }
-        
-        public Boolean onAdd(String clue, String answer, String date ,int difficulty)
+
+        public Boolean onAdd(String clue, String answer, String date, int difficulty)
         {
             if (clue is not null && answer is not null && date is not null &&
-            difficulty != -1 && db.Add(clue, answer, difficulty, date)) 
-            { 
+            difficulty != -1 && db.Add(clue, answer, difficulty, date))
+            {
                 return true;
             }
             return false;
@@ -37,11 +37,11 @@ namespace Lab2_QaddarShabbar
             return false;
         }
 
-        public Boolean onEdit(int id ,string clue, string answer, string date, int difficulty)
+        public Boolean onEdit(int id, string clue, string answer, string date, int difficulty)
         {
             Entry entryToEdit = getEntry(id);
 
-            if (entryToEdit is not null && db.Edit(entryToEdit,clue,answer,date,difficulty))
+            if (entryToEdit is not null && db.Edit(entryToEdit, clue, answer, date, difficulty))
             {
                 return true;
             }

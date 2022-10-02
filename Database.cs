@@ -7,7 +7,7 @@ using System.Text.Json;
 
 namespace Lab2_QaddarShabbar
 {
-    public class Database
+    public class Database : IDatabase
     {
 
         String appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
@@ -28,21 +28,23 @@ namespace Lab2_QaddarShabbar
             fileName = $"{appDataPath}/clues.db"; // added new 
             options = new JsonSerializerOptions { WriteIndented = true }; // added new
             entries = GetEntries();
-           
+
         }
 
-        
 
-        public Boolean Add(string clue, string answer,int difficulty,string date) 
+
+        public Boolean Add(string clue, string answer, int difficulty, string date)
         {
 
 
             int id = 0;
+            Entry entry = new Entry(clue, answer, difficulty, date, id++);
 
-            
+
             try
             {
-                entries.Add(new Entry(clue, answer, difficulty, date, id++));
+                entries.Add(entry);
+
                 string jsonString = JsonSerializer.Serialize(entries, options);
                 File.WriteAllText(fileName, jsonString);
                 return true;
@@ -65,9 +67,9 @@ namespace Lab2_QaddarShabbar
             {
                 entries.Remove(entry);
 
-            string jsonString = JsonSerializer.Serialize(entries, options);
-            File.WriteAllText(fileName, jsonString);
-             return true;
+                string jsonString = JsonSerializer.Serialize(entries, options);
+                File.WriteAllText(fileName, jsonString);
+                return true;
 
             }
             catch (IOException ioe)
@@ -80,14 +82,14 @@ namespace Lab2_QaddarShabbar
 
         }
 
-        public Boolean Edit(Entry entry,string clue, string answer, string date, int difficulty)
+        public Boolean Edit(Entry entry, string clue, string answer, string date, int difficulty)
         {
             int currentEntryIndex = entries.IndexOf(entry);
 
-                entries[currentEntryIndex].Clue = clue;
-                entries[currentEntryIndex].Answer = answer;
-                entries[currentEntryIndex].CurrentDate = date;
-                entries[currentEntryIndex].Difficulty = difficulty;
+            entries[currentEntryIndex].Clue = clue;
+            entries[currentEntryIndex].Answer = answer;
+            entries[currentEntryIndex].CurrentDate = date;
+            entries[currentEntryIndex].Difficulty = difficulty;
 
             try
             {
@@ -101,8 +103,8 @@ namespace Lab2_QaddarShabbar
             }
 
             return false;
-           
-       
+
+
 
         }
 
@@ -118,14 +120,20 @@ namespace Lab2_QaddarShabbar
             }
 
             string jsonString = File.ReadAllText(fileName);
-            
-            if(jsonString.Length > 0)
+
+            if (jsonString.Length > 0)
             {
+                
                 entries = JsonSerializer.Deserialize<ObservableCollection<Entry>>(jsonString);
+
+            }
+            else
+            {
+                entries = new ObservableCollection<Entry>();
             }
 
             return entries;
-       
+
         }
 
     }
