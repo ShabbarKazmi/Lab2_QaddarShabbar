@@ -49,8 +49,8 @@ namespace Lab2_QaddarShabbar
             Entry entryToEdit = getEntry(id);
 
             if (clue is not null && answer is not null && date is not null &&
-            difficulty != -1 && db.Add(clue, answer, difficulty, date) &&
-            entryToEdit is not null && db.Edit(entryToEdit, clue, answer, date, difficulty))
+            difficulty != -1 && entryToEdit is not null 
+            && db.Edit(entryToEdit, clue, answer, date, difficulty))
             {
                 return true;
             }
