@@ -8,6 +8,7 @@ using System.Text.Json;
 
 /**
  * 
+ * Database of program which adds,deletes and edits the program
  * 
  */
 
@@ -43,7 +44,7 @@ namespace Lab2_QaddarShabbar
         {
 
 
-            int id = entries.Count//0;
+            int id = entries.Count;
             Entry entry = new Entry(clue, answer, difficulty, date,++id);
 
 

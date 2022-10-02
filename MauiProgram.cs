@@ -1,4 +1,4 @@
-﻿using static Android.Provider.Telephony.Mms;
+﻿
 
 namespace Lab2_QaddarShabbar;
 
