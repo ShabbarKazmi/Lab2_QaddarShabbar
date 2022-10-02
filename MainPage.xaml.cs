@@ -19,7 +19,7 @@ public partial class MainPage : ContentPage
         EntriesLV.ItemsSource = bl.db.AllEntries;
     }
 
-    // Clue Field 
+    // Clue Entry object
     private void ClueCompleted(object sender, EventArgs e)
     {
         userClue = Clue.Text;
@@ -30,7 +30,7 @@ public partial class MainPage : ContentPage
         userClue = Clue.Text;
     }
 
-    //Answer Field 
+    //Answer Entry 
     private void AnswerTextChanged(object sender, TextChangedEventArgs e)
     {
         userAnswer = Answer.Text;
@@ -48,11 +48,15 @@ public partial class MainPage : ContentPage
         
     }
 
+
+    //Date Picker object
     void OnDateSelected(object sender, DateChangedEventArgs args)
     {
         userDate = (((DatePicker)sender).Date.ToString("d"));
     }
 
+
+    //On Add button. Checks if the entry is valid and then gives a popup accordingly
 
     async void  onAdd(System.Object sender, System.EventArgs e)
     {
@@ -62,16 +66,16 @@ public partial class MainPage : ContentPage
         }
         else
         {
-           await DisplayAlert("Add","There was an error in adding current entry.Please try again", "Ok");
+           await DisplayAlert("Add","There was an error in adding current entry. Please make sure Date is Selected and All fields are filled", "Ok");
         }
 
     }
 
+    //On Delete. Checks if the entry is valid and then gives a popup accordingly
     async void onDelete(System.Object sender, System.EventArgs e)
     {
         int idToDelete;
-        //string id = await DisplayPromptAsync("Edit Entry", "Enter Id of entry:", keyboard: Keyboard.Numeric);
-
+        
         Entry Selected = (Entry)EntriesLV.SelectedItem;
         if ( Selected is not null)
         {
@@ -83,7 +87,7 @@ public partial class MainPage : ContentPage
             }
             else
             {
-                await DisplayAlert("Delete", "There was an error in adding current entry.Please try again", "Ok");
+                await DisplayAlert("Delete", "There was an error in adding current entry. Please try again", "Ok");
             }
         }
         else
@@ -95,12 +99,9 @@ public partial class MainPage : ContentPage
 
     }
 
+    //On Edit button. Checks if the entry is valid and then gives a popup accordingly.
     async void onEdit(System.Object sender, System.EventArgs e) 
     {
-
-
-
-        //string userEditId = await DisplayPromptAsync("Edit Entry", "Enter Id of entry:", keyboard: Keyboard.Numeric);
 
         int idToEdit;
         Entry Selected = (Entry)EntriesLV.SelectedItem;
@@ -122,12 +123,6 @@ public partial class MainPage : ContentPage
         {
             await DisplayAlert("Edit", "Please Select ID to Edit", "Ok");
         }
-
-
-
-
-
-
 
     }   
 }

@@ -4,6 +4,11 @@ namespace Lab2_QaddarShabbar
 {
     public interface IDatabase
     {
+
+        /**
+        * Interfac class for Database
+        */
+
         ObservableCollection<Entry> AllEntries { get; set; }
 
         bool Add(string clue, string answer, int difficulty, string date);
