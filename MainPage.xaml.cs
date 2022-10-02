@@ -5,9 +5,9 @@ namespace Lab2_QaddarShabbar;
 public partial class MainPage : ContentPage
 {
 
-    public String userClue = null;
-    public String userAnswer = null;
-    public String userDate = null;
+    public string userClue = null;
+    public string userAnswer = null;
+    public string userDate = null;
     public int userDifficulty = -1;
 
     public Businesslogic bl;

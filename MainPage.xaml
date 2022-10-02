@@ -19,7 +19,6 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
             <!--Page Title-->
@@ -41,14 +40,16 @@
 
                 <VerticalStackLayout>
 
+
                     <Button  
-                    x:Name="EditButton"
-                    Text="Edit"
+                    x:Name="AddButton"
+                    Text="Add" 
                     BorderWidth="3"
 				    WidthRequest="200"
 				    HeightRequest="100"
 				    HorizontalOptions="StartAndExpand"
-                     Clicked="onEdit"
+                        Clicked="onAdd"
+                        
                       />
 
                     <Button  
@@ -62,13 +63,13 @@
                       />
 
                     <Button  
-                    x:Name="AddButton"
-                    Text="Add" 
+                    x:Name="EditButton"
+                    Text="Edit"
                     BorderWidth="3"
 				    WidthRequest="200"
 				    HeightRequest="100"
 				    HorizontalOptions="StartAndExpand"
-                        Clicked="onAdd"
+                     Clicked="onEdit"
                       />
 
                 </VerticalStackLayout>
@@ -102,12 +103,11 @@
                                     <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
-
-                                <Label Grid.Row="1" Grid.Column="0" Text="{Binding Id}" />
-                                <Label Grid.Row="1" Grid.Column="1" Text="{Binding Clue}"/>
-                                <Label Grid.Row="1" Grid.Column="2" Text="{Binding Answer}"/>
-                                <Label Grid.Row="1" Grid.Column="3" Text="{Binding CurrentDate}"/>
-                                <Label Grid.Row="1" Grid.Column="4"  Text="{Binding Difficulty}"/>
+                                
+                                <Label Grid.Row="1" Grid.Column="0" Text="{Binding Clue}"/>
+                                <Label Grid.Row="1" Grid.Column="1" Text="{Binding Answer}"/>
+                                <Label Grid.Row="1" Grid.Column="2" Text="{Binding CurrentDate}"/>
+                                <Label Grid.Row="1" Grid.Column="3"  Text="{Binding Difficulty}"/>
 
                             </Grid>
                         </ViewCell>
@@ -146,7 +146,7 @@
 
                         <Label
 				Grid.Column="0"
-			    Grid.Row="4"
+			    Grid.Row="3"
 				Text="Difficulty"
 				FontSize="24"
 				HorizontalOptions="StartAndExpand"
@@ -154,7 +154,7 @@
 
                         <Label
 				Grid.Column="0"
-		        Grid.Row="2"
+		        Grid.Row="3"
 				Text="Date"
 				FontSize="24"
 				HorizontalOptions="Start"/>
@@ -193,6 +193,7 @@
                     />
 
                         </Border>
+                        <!--made changes here -->
 
                         <Border>
                             <Entry
@@ -206,10 +207,10 @@
                                 Completed="DifficultyCompleted"
 />
                         </Border>
-
+                        <!--made changes here -->
                         <Border>
                             <DatePicker
-                                Grid.Row="2"
+                                Grid.Row="2" 
                                 x:Name=" CurrentDate"
 					   FontSize="18"
 				MinimumDate = "01/01/2022"
@@ -226,43 +227,6 @@
        
     </Grid>
 
-
-
-
-        <!--
-        <VerticalStackLayout
-            Spacing="25"
-            Padding="30,0"
-            VerticalOptions="Center">
-
-            <Image
-                Source="dotnet_bot.png"
-                SemanticProperties.Description="Cute dot net bot waving hi to you!"
-                HeightRequest="200"
-                HorizontalOptions="Center" />
-
-            <Label
-                Text="Hello, World!"
-                SemanticProperties.HeadingLevel="Level1"
-                FontSize="32"
-                HorizontalOptions="Center" />
-
-            <Label
-                Text="Welcome to .NET Multi-platform App UI"
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
-                FontSize="18"
-                HorizontalOptions="Center" />
-
-            <Button
-                x:Name="CounterBtn"
-                Text="Click me"
-                SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"
-                HorizontalOptions="Center" />
-
-        </VerticalStackLayout>
-    -->
     </ScrollView>
 
 </ContentPage>

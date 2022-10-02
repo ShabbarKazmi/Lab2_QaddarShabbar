@@ -18,9 +18,8 @@ namespace Lab2_QaddarShabbar
         
         public Boolean onAdd(String clue, String answer, String date ,int difficulty)
         {
-            int id = 0;
-            if ( clue is not null && answer is not null && date is not null &&
-            difficulty != -1 && db.Add(new Entry(clue, answer, difficulty, date,++id)))
+            if (clue is not null && answer is not null && date is not null &&
+            difficulty != -1 && db.Add(clue, answer, difficulty, date)) 
             { 
                 return true;
             }
@@ -38,7 +37,7 @@ namespace Lab2_QaddarShabbar
             return false;
         }
 
-        public Boolean onEdit(int id ,String clue, String answer, String date, int difficulty)
+        public Boolean onEdit(int id ,string clue, string answer, string date, int difficulty)
         {
             Entry entryToEdit = getEntry(id);
 
